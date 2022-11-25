@@ -1,0 +1,88 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+}
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.composeudemy"
+        minSdk 30
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        // Enables Jetpack Compose for this module
+        compose true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.3.0'
+        //kotlinCompilerVersion 'kotlin_version'
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    //Fundamental building blocks of Compose's programming model and state management, and core runtime for the Compose Compiler Plugin to target.
+    implementation "androidx.compose.runtime:runtime:1.2.1"
+    implementation "androidx.compose.runtime:runtime-livedata:1.2.1"
+
+    //Fundamental components of compose UI needed to interact with the device, including layout, drawing, and input.
+    implementation "androidx.compose.ui:ui:1.2.1"
+
+    //Build Jetpack Compose UIs with ready to use Material Design Components. This is the higher level entry point of Compose, designed to provide components that match those described at www.material.io.
+    implementation "androidx.compose.material:material:1.2.1"
+    implementation "androidx.compose.material:material-icons-extended:1.2.1"
+
+    //Write Jetpack Compose applications with ready to use building blocks and extend foundation to build your own design system pieces.
+    implementation "androidx.compose.foundation:foundation:1.2.1"
+    implementation "androidx.compose.foundation:foundation-layout:1.2.1"
+
+    //Build animations in their Jetpack Compose applications to enrich the user experience.
+    implementation "androidx.compose.animation:animation:1.2.1"
+
+    //Allows to render composables with Preview
+    implementation "androidx.compose.ui:ui-tooling:1.2.1"
+
+    // In charge of setContent
+    implementation "androidx.activity:activity-compose:1.6.0"
+
+    // Accompanist
+     implementation "dev.chrisbanes.accompanist:accompanist-coil:$accompanist"
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
+
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
